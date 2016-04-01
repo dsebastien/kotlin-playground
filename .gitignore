@@ -1,0 +1,18 @@
+# Project specific
+target/
+
+# Logs
+*.log
+
+# OS generated files #
+Desktop.ini
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Icon?
+
+# JetBrains IDEs
+*.iml
+.idea/
+.webstorm/
+*.swp
