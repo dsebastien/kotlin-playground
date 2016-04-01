@@ -1,284 +1,324 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>be.dsebastien</groupId>
-	<artifactId>kotlin-playground</artifactId>
-	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
-	<inceptionYear>2016</inceptionYear>
+    <groupId>be.dsebastien</groupId>
+    <artifactId>kotlin-playground</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <inceptionYear>2016</inceptionYear>
 
-	<name>kotlin-playground</name>
-	<description>A Playground for Kotlin.</description>
-	<url>https://github.com/dsebastien/kotlin-playground</url>
+    <name>kotlin-playground</name>
+    <description>A Playground for Kotlin.</description>
+    <url>https://github.com/dsebastien/kotlin-playground</url>
 
-	<licenses>
-		<license>
-			<name>MIT License</name>
-			<url>https://opensource.org/licenses/MIT</url>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
 
-	<developers>
-		<developer>
-			<id>dSebastien</id>
-			<email>seb@dsebastien dot net</email>
-			<name>Sebastien Dubois</name>
-			<url>https://www.dsebastien.net</url>
-			<timezone>Europe/Brussels</timezone>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <id>dSebastien</id>
+            <email>seb@dsebastien dot net</email>
+            <name>Sebastien Dubois</name>
+            <url>https://www.dsebastien.net</url>
+            <timezone>Europe/Brussels</timezone>
+        </developer>
+    </developers>
 
-	<scm>
-		<url>https://github.com/dsebastien/kotlin-playground.git</url>
-		<connection>scm:git:https://github.com/dsebastien/kotlin-playground.git</connection>
-		<developerConnection>scm:git:git@github.com:dsebastien/kotlin-playground.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
+    <scm>
+        <url>https://github.com/dsebastien/kotlin-playground.git</url>
+        <connection>scm:git:https://github.com/dsebastien/kotlin-playground.git</connection>
+        <developerConnection>scm:git:git@github.com:dsebastien/kotlin-playground.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
-	<issueManagement>
-		<url>https://github.com/dsebastien/kotlin-playground/issues</url>
-		<system>GitHub</system>
-	</issueManagement>
+    <issueManagement>
+        <url>https://github.com/dsebastien/kotlin-playground/issues</url>
+        <system>GitHub</system>
+    </issueManagement>
 
-	<prerequisites>
-		<maven>${version.maven}</maven>
-	</prerequisites>
+    <prerequisites>
+        <maven>${version.maven}</maven>
+    </prerequisites>
 
-	<properties>
-		<!-- Build settings -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+    <properties>
+        <!-- Build settings -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
-		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
 
-		<argLine>${jvm.args}</argLine>
+        <argLine>${jvm.args}</argLine>
 
-		<!-- Versions -->
-		<version.maven>3.3.9</version.maven>
-		<version.jdk>1.8</version.jdk>
+        <!-- Versions -->
+        <version.maven>3.3.9</version.maven>
+        <version.jdk>1.8</version.jdk>
 
-		<version.kotlin>1.0.1-2</version.kotlin>
-		<version.junit>4.12</version.junit>
+        <version.kotlin>1.0.1-2</version.kotlin>
+        <version.dokka>0.9.7</version.dokka>
 
-		<!-- Surefire/Failsafe settings -->
-		<forkCount>1</forkCount>
-		<reuseForks>true</reuseForks>
-	</properties>
+        <version.junit>4.12</version.junit>
 
-	<build>
-		<finalName>${project.artifactId}</finalName>
+        <!-- Surefire/Failsafe settings -->
+        <forkCount>1</forkCount>
+        <reuseForks>true</reuseForks>
+    </properties>
 
-		<!-- Make sure Kotlin folders are considered -->
-		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+    <build>
+        <finalName>${project.artifactId}</finalName>
 
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
+        <!-- Make sure Kotlin folders are considered -->
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>kotlin-maven-plugin</artifactId>
-				<groupId>org.jetbrains.kotlin</groupId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-			</plugin>
-		</plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
 
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.5.1</version>
-					<configuration>
-						<compilerVersion>${version.jdk}</compilerVersion>
-						<source>${version.jdk}</source>
-						<target>${version.jdk}</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>kotlin-maven-plugin</artifactId>
-					<groupId>org.jetbrains.kotlin</groupId>
-					<version>${version.kotlin}</version>
-					<executions>
-						<!-- The Kotlin compiler must be executed before the Java compiler -->
-						<execution>
-							<id>compile</id>
-							<phase>process-sources</phase>
-							<goals>
-								<goal>compile</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>test-compile</id>
-							<phase>process-test-sources</phase>
-							<goals>
-								<goal>test-compile</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.10</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>2.19.1</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.4.1</version>
-					<executions>
-						<execution>
-							<id>enforce-versions</id>
-							<goals>
-								<goal>enforce</goal>
-							</goals>
-							<configuration>
-								<rules>
-									<requireMavenVersion>
-										<version>${version.maven}</version>
-									</requireMavenVersion>
-									<requireJavaVersion>
-										<version>${version.jdk}</version>
-									</requireJavaVersion>
-								</rules>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.10.3</version>
-					<configuration>
-						<additionalparam>-Xdoclint:none</additionalparam>
-					</configuration>
-					<executions>
-						<execution>
-							<id>attach-javadocs</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>3.0.0</version>
-					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>jar-no-fork</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.7</version>
-					<configuration>
-						<encoding>${project.build.sourceEncoding}</encoding>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.19.1</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <groupId>org.jetbrains.kotlin</groupId>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+        </plugins>
 
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
+                    <configuration>
+                        <compilerVersion>${version.jdk}</compilerVersion>
+                        <source>${version.jdk}</source>
+                        <target>${version.jdk}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <version>${version.kotlin}</version>
+                    <executions>
+                        <!-- The Kotlin compiler must be executed before the Java compiler -->
+                        <execution>
+                            <id>compile</id>
+                            <phase>process-sources</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <phase>process-test-sources</phase>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.jetbrains.dokka</groupId>
+                    <artifactId>dokka-maven-plugin</artifactId>
+                    <version>${version.dokka}</version>
+                    <executions>
+                        <execution>
+                            <phase>pre-site</phase>
+                            <goals>
+                                <goal>dokka</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- Add links towards sources on GitHub -->
+                        <sourceLinks>
+                            <link>
+                                <dir>${project.basedir}/src/main/kotlin</dir>
+                                <url>http://github.com/dsebastien/kotlin-playground</url>
+                            </link>
+                        </sourceLinks>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.19.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.4.1</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-versions</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>${version.maven}</version>
+                                    </requireMavenVersion>
+                                    <requireJavaVersion>
+                                        <version>${version.jdk}</version>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.3</version>
+                    <configuration>
+                        <additionalparam>-Xdoclint:none</additionalparam>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.7</version>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-	<dependencies>
-		<!-- Kotlin -->
-		<dependency>
-			<groupId>org.jetbrains.kotlin</groupId>
-			<artifactId>kotlin-stdlib</artifactId>
-			<version>${version.kotlin}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jetbrains.kotlin</groupId>
-			<artifactId>kotlin-reflect</artifactId>
-			<version>${version.kotlin}</version>
-		</dependency>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
 
-		<!-- JUnit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${version.junit}</version>
-			<scope>test</scope>
-		</dependency>
+    <dependencies>
+        <!-- Kotlin -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${version.kotlin}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+            <version>${version.kotlin}</version>
+        </dependency>
 
-		<!-- Kotlint Test Junit -->
-		<dependency>
-			<groupId>org.jetbrains.kotlin</groupId>
-			<artifactId>kotlin-test-junit</artifactId>
-			<version>${version.kotlin}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
 
-	<profiles>
-		<!-- unit tests -->
-		<profile>
-			<id>unit-test</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<!-- Exclude integration tests -->
-							<!--
-							<excludedGroups></excludedGroups>
-							-->
-							<workingDirectory>${project.build.directory}</workingDirectory>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+        <!-- Kotlint Test Junit -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit</artifactId>
+            <version>${version.kotlin}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <!-- unit tests -->
+        <profile>
+            <id>unit-test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <!-- Exclude integration tests -->
+                            <!--
+                            <excludedGroups></excludedGroups>
+                            -->
+                            <workingDirectory>${project.build.directory}</workingDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <pluginRepositories>
+        <!-- Necessary for Dokka -->
+        <pluginRepository>
+            <id>jcenter</id>
+            <name>JCenter</name>
+            <url>https://jcenter.bintray.com/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
